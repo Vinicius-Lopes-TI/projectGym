@@ -88,7 +88,7 @@ function Content({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChange = (list: FilterOption[]) => {
+  const handleChange: any = (list: FilterOption[]) => {
     setToolbarFilters(list?.map((item) => item.value));
   };
 
