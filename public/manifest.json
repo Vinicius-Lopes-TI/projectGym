@@ -1,0 +1,21 @@
+{
+    "short_name": "ProjectGym",
+    "name": "Aplicativo de treinos personalizados",
+    "icons": [
+      {
+        "src": "200x200.png",
+        "sizes": "200x200",
+        "type": "image/png"
+      },
+      {
+        "src": "600x400.png",
+        "sizes": "600x400",
+        "type": "image/png",
+        "purpose": "any maskable"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
