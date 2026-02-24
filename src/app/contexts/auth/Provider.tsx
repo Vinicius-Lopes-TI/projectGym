@@ -2,10 +2,29 @@
 import { useEffect, useReducer, ReactNode } from "react";
 
 // Local Imports
+import type { LoginResponse } from "@/@types/auth";
+import type { User } from "@/@types/user";
 import axios from "@/utils/axios";
 import { isTokenValid, setSession } from "@/utils/jwt";
 import { AuthProvider as AuthContext, AuthContextType } from "./context";
-import { User } from "@/@types/user";
+
+function toBasicAuth(username: string, password: string): string {
+  const encoded = btoa(
+    unescape(encodeURIComponent(`${username}:${password}`)),
+  );
+  return `Basic ${encoded}`;
+}
+
+function mapLoginResponseToUser(data: LoginResponse): User {
+  return {
+    id: data.userName,
+    name: data.fullName,
+    role:
+      data.listOfProfiles?.[0] !== undefined
+        ? String(data.listOfProfiles[0])
+        : undefined,
+  };
+}
 
 // ----------------------------------------------------------------------
 
@@ -87,14 +106,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (authToken && isTokenValid(authToken)) {
           setSession(authToken);
 
-          const response = await axios.get<{ user: User }>("/user/profile");
-          const { user } = response.data;
-
           dispatch({
             type: "INITIALIZE",
             payload: {
               isAuthenticated: true,
-              user,
+              user: null,
             },
           });
         } else {
@@ -125,32 +141,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "LOGIN_REQUEST" });
 
     try {
-      const response = await axios.post<{ authToken: string; user: User }>(
-        "/login",
-        credentials,
+      const authorization = toBasicAuth(
+        credentials.username,
+        credentials.password,
       );
-      const { authToken, user } = response.data;
+      const response = await axios.post<LoginResponse>("/auth/login", "", {
+        headers: { Authorization: authorization },
+      });
+      const data = response.data;
+      const { accessToken } = data;
 
-      if (
-        typeof authToken !== "string" ||
-        typeof user !== "object" ||
-        user === null
-      ) {
+      if (typeof accessToken !== "string" || accessToken.trim() === "") {
         throw new Error("Response is not valid");
       }
 
-      setSession(authToken);
+      setSession(accessToken);
 
+      const user = mapLoginResponseToUser(data);
       dispatch({
         type: "LOGIN_SUCCESS",
         payload: { user },
       });
     } catch (err) {
+      const errorMessage =
+        typeof err === "string"
+          ? err
+          : err instanceof Error
+            ? err.message
+            : "Login failed";
       dispatch({
         type: "LOGIN_ERROR",
-        payload: {
-          errorMessage: err instanceof Error ? err.message : "Login failed",
-        },
+        payload: { errorMessage },
       });
     }
   };
