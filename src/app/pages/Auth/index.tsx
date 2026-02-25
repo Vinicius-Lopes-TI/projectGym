@@ -42,7 +42,7 @@ export default function SignIn() {
             <Logo className="mx-auto size-16" />
             <div className="mt-4">
               <h2 className="text-2xl font-semibold text-gray-600 dark:text-dark-100">
-                Welcome Back
+                Project Gym
               </h2>
               <p className="text-gray-400 dark:text-dark-300">
                 Please sign in to continue
