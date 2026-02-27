@@ -22,6 +22,18 @@ const protectedRoutes: RouteObject = {
           element: <Navigate to="/dashboards/home" />,
         },
         {
+          path: "student-health",
+          lazy: async () => ({
+            Component: (await import("@/app/pages/StudentHealth")).default,
+          }),
+        },
+        {
+          path: "students",
+          lazy: async () => ({
+            Component: (await import("@/app/pages/Students")).default,
+          }),
+        },
+        {
           path: "dashboards",
           children: [
             {
