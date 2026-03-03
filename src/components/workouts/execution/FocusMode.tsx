@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import { Button, Badge } from "@/components/ui";
 import type { WorkoutExercise } from "@/data/mock-workout-execution";
@@ -38,7 +38,7 @@ export function FocusMode({ exercise, onClose }: FocusModeProps) {
           className="text-white hover:bg-white/10"
           onClick={onClose}
         >
-          <X className="h-5 w-5" />
+          <XMarkIcon className="h-5 w-5" />
         </Button>
       </div>
 

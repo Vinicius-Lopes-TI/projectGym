@@ -1,7 +1,11 @@
 import { useState, useRef, useCallback } from "react";
 import { useNavigate, useParams } from "react-router";
-import { ArrowLeftIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Save } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  PlusIcon,
+  XMarkIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
 
 import { Page } from "@/components/shared/Page";
 import { Button, Card } from "@/components/ui";
@@ -294,7 +298,7 @@ export default function NewWorkoutPage() {
                   variant="filled"
                   onClick={handleSave}
                 >
-                  <Save className="mr-2 h-4 w-4" />
+                  <CheckCircleIcon className="mr-2 h-4 w-4" />
                   Salvar treino
                 </Button>
                 <Button

@@ -1,4 +1,9 @@
-import { PartyPopper, Clock, Dumbbell, CheckCircle2 } from "lucide-react";
+import {
+  SparklesIcon,
+  ClockIcon,
+  BoltIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
 
 import { Button, Card } from "@/components/ui";
 
@@ -18,7 +23,7 @@ export function WorkoutComplete({
       <Card className="w-full max-w-sm border border-gray-200 bg-white p-6 text-center shadow-lg dark:border-dark-600 dark:bg-dark-700">
         <div className="flex flex-col items-center gap-4">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-500/10">
-            <PartyPopper className="h-10 w-10 text-primary-500" />
+            <SparklesIcon className="h-10 w-10 text-primary-500" />
           </div>
           <div>
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-dark-50">
@@ -31,7 +36,7 @@ export function WorkoutComplete({
 
           <div className="mt-2 flex gap-6">
             <div className="flex flex-col items-center gap-1">
-              <Clock className="h-5 w-5 text-gray-400 dark:text-dark-300" />
+              <ClockIcon className="h-5 w-5 text-gray-400 dark:text-dark-300" />
               <span className="text-lg font-semibold text-gray-900 dark:text-dark-50">
                 {totalTime}
               </span>
@@ -40,7 +45,7 @@ export function WorkoutComplete({
               </span>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <Dumbbell className="h-5 w-5 text-gray-400 dark:text-dark-300" />
+              <BoltIcon className="h-5 w-5 text-gray-400 dark:text-dark-300" />
               <span className="text-lg font-semibold text-gray-900 dark:text-dark-50">
                 {totalExercises}
               </span>
@@ -56,7 +61,7 @@ export function WorkoutComplete({
             className="mt-4 w-full inline-flex items-center justify-center gap-2"
             onClick={onFinish}
           >
-            <CheckCircle2 className="h-5 w-5" />
+            <CheckCircleIcon className="h-5 w-5" />
             Concluir treino
           </Button>
         </div>

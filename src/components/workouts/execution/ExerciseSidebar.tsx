@@ -1,4 +1,4 @@
-import { Check, Video } from "lucide-react";
+import { CheckIcon, VideoCameraIcon } from "@heroicons/react/24/outline";
 
 import { cn } from "@/lib/utils";
 import type { WorkoutExercise } from "@/data/mock-workout-execution";
@@ -39,13 +39,13 @@ export function ExerciseSidebar({
           >
             <div className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-[11px] font-semibold text-gray-500 dark:bg-dark-600 dark:text-dark-200">
               {isDone ? (
-                <Check className="h-3.5 w-3.5 text-primary-600 dark:text-primary-400" />
+                <CheckIcon className="h-3.5 w-3.5 text-primary-600 dark:text-primary-400" />
               ) : (
                 <span>{i + 1}</span>
               )}
             </div>
             {ex.videoUrl && (
-              <Video className="h-3 w-3 text-gray-400 dark:text-dark-300" />
+              <VideoCameraIcon className="h-3 w-3 text-gray-400 dark:text-dark-300" />
             )}
           </button>
         );

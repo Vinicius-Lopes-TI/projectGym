@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Play, Maximize2 } from "lucide-react";
+import {
+  PlayIcon,
+  ArrowsPointingOutIcon,
+} from "@heroicons/react/24/outline";
 
 import { Button, Card } from "@/components/ui";
 
@@ -26,7 +29,7 @@ export function VideoPlayer({ videoUrl, exerciseName, onFocusMode }: VideoPlayer
     return (
       <Card className="overflow-hidden">
         <div className="relative aspect-video flex items-center justify-center bg-gray-100 text-gray-400 dark:bg-dark-700 dark:text-dark-300">
-          <Play className="h-10 w-10 opacity-40" />
+          <PlayIcon className="h-10 w-10 opacity-40" />
           <span className="ml-3 text-sm">Sem vídeo disponível</span>
         </div>
       </Card>
@@ -52,7 +55,7 @@ export function VideoPlayer({ videoUrl, exerciseName, onFocusMode }: VideoPlayer
               }}
             />
             <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 text-white shadow-lg transition-transform group-hover:scale-110">
-              <Play className="h-7 w-7 fill-current" />
+              <PlayIcon className="h-7 w-7" />
             </div>
           </button>
         ) : (
@@ -72,7 +75,7 @@ export function VideoPlayer({ videoUrl, exerciseName, onFocusMode }: VideoPlayer
         className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1.5 bg-white/90 text-gray-700 shadow-sm backdrop-blur dark:bg-dark-600 dark:text-dark-50"
         onClick={onFocusMode}
       >
-        <Maximize2 className="h-3.5 w-3.5" />
+        <ArrowsPointingOutIcon className="h-3.5 w-3.5" />
         Modo foco
       </Button>
     </Card>

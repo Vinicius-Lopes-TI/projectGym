@@ -1,11 +1,12 @@
 import {
-  Trash2,
-  ChevronUp,
-  ChevronDown,
-  GripVertical,
-  Link as LinkIcon,
-} from "lucide-react";
-import { Card, Input, Textarea, Select } from "@/components/ui";
+  TrashIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
+  Bars2Icon,
+  LinkIcon,
+} from "@heroicons/react/24/outline";
+
+import { Card, Input, Textarea, Select, Button } from "@/components/ui";
 import type { Exercise } from "@/data/mock-workout";
 
 const EXECUTION_TYPES = [
@@ -73,33 +74,36 @@ export function ExerciseCard({
 
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-1.5 text-gray-500 dark:text-dark-300">
-          <GripVertical className="h-4 w-4" />
+          <Bars2Icon className="h-4 w-4" />
           <span className="text-sm font-semibold">#{index + 1}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            className="btn btn-flat btn-xs text-gray-500 disabled:opacity-40"
+          <Button
+            variant="flat"
+            color="neutral"
+            isIcon
             disabled={index === 0}
             onClick={() => onMoveUp(index)}
           >
-            <ChevronUp className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            className="btn btn-flat btn-xs text-gray-500 disabled:opacity-40"
+            <ChevronUpIcon className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="flat"
+            color="neutral"
+            isIcon
             disabled={index === total - 1}
             onClick={() => onMoveDown(index)}
           >
-            <ChevronDown className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            className="btn btn-flat btn-xs text-error hover:text-error-dark"
+            <ChevronDownIcon className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="flat"
+            color="error"
+            isIcon
             onClick={() => onRemove(exercise.id)}
           >
-            <Trash2 className="h-4 w-4" />
-          </button>
+            <TrashIcon className="h-4 w-4" />
+          </Button>
         </div>
       </div>
 
