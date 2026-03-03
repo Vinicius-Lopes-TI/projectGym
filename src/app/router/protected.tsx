@@ -34,6 +34,19 @@ const protectedRoutes: RouteObject = {
           }),
         },
         {
+          path: "students/:studentId/workouts/new",
+          lazy: async () => ({
+            Component: (await import("@/app/pages/Workouts/New")).default,
+          }),
+        },
+        {
+          path: "students/:studentId/workouts/:workoutId/execute",
+          lazy: async () => ({
+            Component: (await import("@/app/pages/Workouts/Execution"))
+              .default,
+          }),
+        },
+        {
           path: "dashboards",
           children: [
             {
