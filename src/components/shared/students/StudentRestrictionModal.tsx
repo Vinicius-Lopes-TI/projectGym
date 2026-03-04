@@ -39,7 +39,8 @@ export function StudentRestrictionModal({ student, open, onOpenChange }: Props) 
 
     const handleCreateWorkout = () => {
         onOpenChange(false);
-        navigate(`/treinos/novo/${student?.id}`);
+        // navigate(`/treinos/novo/${student?.id}`);
+        navigate(`/students/${student?.id}/workouts/new`);
     };
 
     return (
