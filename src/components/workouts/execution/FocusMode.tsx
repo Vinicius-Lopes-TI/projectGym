@@ -11,8 +11,11 @@ interface FocusModeProps {
 const getEmbedUrl = (url: string) => {
   if (!url) return "";
   if (url.includes("youtube.com/embed")) return url;
-  const match = url.match(/(?:youtu\\.be\\/|youtube\\.com\\/watch\\?v=)([\\w-]+)/);
+
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=)([\w-]+)/);
+
   if (match) return `https://www.youtube.com/embed/${match[1]}`;
+
   return url;
 };
 

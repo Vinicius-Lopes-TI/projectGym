@@ -15,8 +15,11 @@ interface VideoPlayerProps {
 const getEmbedUrl = (url: string) => {
   if (!url) return "";
   if (url.includes("youtube.com/embed")) return url;
-  const match = url.match(/(?:youtu\\.be\\/|youtube\\.com\\/watch\\?v=)([\\w-]+)/);
+
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=)([\w-]+)/);
+
   if (match) return `https://www.youtube.com/embed/${match[1]}`;
+
   return url;
 };
 
@@ -69,7 +72,6 @@ export function VideoPlayer({ videoUrl, exerciseName, onFocusMode }: VideoPlayer
         )}
       </div>
       <Button
-        size="sm"
         variant="soft"
         color="neutral"
         className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1.5 bg-white/90 text-gray-700 shadow-sm backdrop-blur dark:bg-dark-600 dark:text-dark-50"
